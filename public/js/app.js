@@ -1,4 +1,4 @@
-angular.module('teaApp',['myRoutes','ngAnimate', 'bagService']).controller('teasController',['$http','Bag','$scope',function($http,Bag,$scope){
+angular.module('teaApp',['myRoutes','ngAnimate', 'bagService']).controller('teasController',['$http','Bag',function($http,Bag){
   var vm = this;
 
   $http.get('/api/teas')
@@ -48,7 +48,7 @@ angular.module('teaApp',['myRoutes','ngAnimate', 'bagService']).controller('teas
 .controller('pagesController',[function(){
   var vm = this;
 }])
-.controller('bagController',['Bag','$scope',function(Bag,$scope){
+.controller('bagController',['Bag',function(Bag,$scope){
   var vm = this;
 
   vm.editing = false;
