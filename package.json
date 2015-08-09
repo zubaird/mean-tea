@@ -1,0 +1,20 @@
+{
+  "name": "mean-tea",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.2",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.1.0",
+    "mongoose-seed": "^0.1.5",
+    "morgan": "^1.6.1",
+    "underscore": "^1.8.3"
+  }
+}

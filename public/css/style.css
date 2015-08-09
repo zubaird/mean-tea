@@ -1,0 +1,31 @@
+body {
+  padding-top: 50px;
+}
+
+.content-views {
+  position: relative;
+  margin-top: 50px;
+}
+
+.todays-special{
+  margin-top: -70px;
+  text-align: center;
+  background-color: tomato;
+}
+
+.ng-enter, .ng-leave {
+  width:100%;
+  position: absolute;
+}
+
+.ng-enter {
+  -webkit-animation:bounce 1.2s both ease-in;
+  -moz-animation:bounce 1.2s both ease-in;
+  animation:bounce 1.2s both ease-in;
+}
+
+.ng-leave {
+  -webkit-animation:bounceOutRight 0.5s both ease-in;
+  -moz-animation:bounceOutRight 0.5s both ease-in;
+  animation:bounceOutRight 0.5s both ease-in;
+}

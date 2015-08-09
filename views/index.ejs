@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mean Tea App</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" title="no title" charset="utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/teasController.js"></script>
+    <script src="js/routes.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css">
+  </head>
+  <body class="container" ng-app="teaApp">
+
+    <header>
+      <div class="todays-special">
+        <h3>50% off all teas!</h3>
+      </div>
+    </header>
+
+    <nav>
+      <a href="/">Home</a> | <a href="#/about">About</a> | Contact | MyBag(0)
+    </nav>
+
+    <main>
+      <div class="content-views">
+        <div ng-view></div>
+      </div>
+    </main>
+
+    <footer>
+    </footer>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
+  </body>
+</html>
