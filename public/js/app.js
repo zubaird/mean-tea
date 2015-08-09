@@ -1,9 +1,8 @@
-angular.module('teaApp',['myRoutes','ngAnimate']).controller('teasController',['$http',function($http){
+angular.module('teaApp',['myRoutes','ngAnimate', 'bagService']).controller('teasController',['$http','Bag','$scope',function($http,Bag,$scope){
   var vm = this;
 
   $http.get('/api/teas')
   .then(function(response){
-    console.log(response.data);
     vm.teas = response.data;
 
     vm.categories = []
@@ -17,8 +16,6 @@ angular.module('teaApp',['myRoutes','ngAnimate']).controller('teasController',['
         }
       })
   });
-
-  vm.things = [];
 
   vm.addTea = function(){
     vm.things.push({
@@ -34,7 +31,36 @@ angular.module('teaApp',['myRoutes','ngAnimate']).controller('teasController',['
     vm.teaData = {}
   }
 
+  vm.userBag = []
+
+  vm.addToBag = function(tea, qty){
+    tea.quantity = qty
+    vm.userBag.push(tea)
+    console.log(vm.userBag, qty)
+  }
+
+  Bag.addToBag(vm.userBag);
+
 }])
 .controller('pagesController',[function(){
   var vm = this;
+}])
+.controller('bagController',['Bag','$scope',function(Bag,$scope){
+  var vm = this;
+
+  vm.editing = false;
+
+  vm.items = Bag.getBag()
+
+  var runningTotal = 0;
+  vm.items.forEach(function(item){
+    runningTotal += (item.price/100) * item.quantity
+    vm.orderTotal = runningTotal;
+  })
+
+  function isEditing(editing){
+    vm.editing = vm.editing || editing
+    console.log(vm.editing, "editing");
+  }
+
 }])

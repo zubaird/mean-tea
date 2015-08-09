@@ -13,7 +13,7 @@ body {
   background-color: tomato;
 }
 
-.ng-enter, .ng-leave {
+/*.ng-enter, .ng-leave {
   width:100%;
   position: absolute;
 }
@@ -28,4 +28,4 @@ body {
   -webkit-animation:bounceOutRight 0.5s both ease-in;
   -moz-animation:bounceOutRight 0.5s both ease-in;
   animation:bounceOutRight 0.5s both ease-in;
-}
+}*/

@@ -1,55 +1,68 @@
-<ul ng-repeat="thing in teas.things">
-    Name:<li>{{thing.name}}</li>
-    Ing: <li>{{thing.ingredients}}</li>
-    caffeineScale: <li>{{thing.caffeineScale}}</li>
-    category: <li>{{thing.categories}}</li>
-</ul>
-
-<form class="form" ng-submit="teas.addTea()">
-  Name: <input type="text" ng-model="teas.teaData.name" class="form-control">
-  Ingredients: <input type="text" ng-model="teas.teaData.ingredients" class="form-control">
-  Caffeine Scale: <input type="text" ng-model="teas.teaData.caffeineScale" class="form-control">
-  Categories:
+<h4>
+  <span class="pull-right">
+    <a href="#/checkout"><button type="button" class="btn btn-primary">
+    <strong>Checkout</strong> | Bag:
+    <span ng-if="teas.userBag.length">({{teas.userBag.length}})</span>
+    <span ng-if="!teas.userBag.length">Empty!</span>
+    </button></a>
+  </span>
+</h4>
+<form class="form-inline">
   <p>
-    <select ng-model="teas.teaData.categories">
+    Search by category:
+    <select ng-model="categorySearch">
       <option ng-repeat="category in teas.categories">{{category}}</option>
     </select>
+    Search by name:
+    <input type="text" ng-model="nameSearch">
   </p>
-  <button type="submit" name="button" class="btn btn-success">Add</button>
-</form>
-
-<form class="form-inline">
-
 </form>
 
 <table class="table table-bordered">
   <thead>
     <tr>
       <td>Tea</td>
-      <td>Ingredients</td>
-      <td>Caffeine Scale</td>
-      <td>Price ($)</td>
-      <td>In Stock?</td>
-      <td>Rating</td>
-      <td>Categories</td>
+      <td>Information</td>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="tea in teas.teas">
+    <tr ng-repeat="tea in teas.teas | filter: categorySearch | filter: nameSearch">
       <td>
-        <strong>{{ tea.name }}</strong>
         <img ng-src="{{tea.imageUrl}}" alt="tea picture" />
       </td>
-      <td>{{ tea.ingredients }}</td>
-      <td>{{ tea.caffeineScale }}</td>
-      <td>${{ (tea.price/100).toFixed(2) }}</td>
-      <td>{{ tea.price/100 | currency }}</td>
-      <td>{{ tea.inStock }}</td>
-      <td>{{ tea.rating }}</td>
       <td>
-        <u ng-repeat="category in tea.categories"l>
-          <li>{{category}}</li>
-        </ul>
+        <h3>{{ tea.name }}
+          <span class="pull-right">
+            Quantity:
+            <select ng-model="quantity">
+              <option  ng-repeat="qty in [1,2,3,4,5,6,7,8,9,10]">{{qty}}</option>
+            </select>
+            <button type="button" name="button" class="btn btn-success" ng-click="teas.addToBag(tea,quantity)">Add To Bag</button>
+          </span>
+        </h3>
+        <p>
+          <strong>Price:</strong> {{ tea.price/100 | currency }}
+        </p>
+        <p>
+          <strong>Caffeine Scale:</strong> {{ tea.caffeineScale }}
+        </p>
+        <p>
+          <strong>Ingredients:</strong> {{ tea.ingredients }}
+        </p>
+        <p>
+          <strong>Rating:</strong> {{ tea.rating }}
+        </p>
+        <p>
+          <strong>In Stock?</strong>
+          <span ng-if="tea.inStock">Yes</span>
+          <span ng-if="!tea.inStock">Sorry, this product is currently unavailable..</span>
+        </p>
+        <p>
+          <strong>Categories:</strong>
+          <ul ng-repeat="category in tea.categories">
+            <li>{{category}}</li>
+          </ul>
+        </p>
       </td>
     </tr>
   </tbody>

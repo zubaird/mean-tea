@@ -28,7 +28,7 @@ var data = [
 
 function createTeas() {
   var teas = []
-  for (var i = 0; i < 801; i++) {
+  for (var i = 0; i < 10; i++) {
     var tea = {
       'name': randomName(),
       'ingredients': randomIngredients(),

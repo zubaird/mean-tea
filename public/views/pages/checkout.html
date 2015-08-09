@@ -1,0 +1,41 @@
+
+
+<h3>My Shopping Bag <span class="pull-right">Order total: {{bag.orderTotal | currency}}</span> </h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <td>Product</td>
+      <td>Quantity</td>
+      <td>Sub-total</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in bag.items">
+      <td>
+        <h3>{{ item.name }}</h3>
+        <img ng-src="{{item.imageUrl}}" alt="tea picture" />
+        <span>
+          <p>
+            <strong>Caffeine Scale:</strong> {{ item.caffeineScale }}
+          </p>
+          <p>
+            <strong>Ingredients:</strong> {{ item.ingredients }}
+          </p>
+          <p>
+            <strong>Rating:</strong> {{ item.rating }}
+          </p>
+        </span>
+      </td>
+      <td>
+        {{item.quantity}}
+      </td>
+      <td>
+          <strong>{{ (item.price/100)*item.quantity | currency }}</strong>
+      </td>
+      <td>
+        <button type="button" ng-click="isEditing(editing)">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<span class="pull-right"><button type="button">Place Order</button></span>

@@ -9,7 +9,12 @@ angular.module('myRoutes',['ngRoute']).config(
     .when('/about',{
       templateUrl: 'views/pages/about.html',
       controller: 'pagesController',
-      controllerAd: 'pages'
+      controllerAs: 'pages'
+    })
+    .when('/checkout',{
+      templateUrl: 'views/pages/checkout.html',
+      controller: 'bagController',
+      controllerAs: 'bag'
     })
     .otherwise({
       templateUrl: 'views/teas/index.html',
