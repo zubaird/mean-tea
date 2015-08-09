@@ -34,6 +34,9 @@ angular.module('teaApp',['myRoutes','ngAnimate', 'bagService']).controller('teas
   vm.userBag = []
 
   vm.addToBag = function(tea, qty){
+    if (qty == undefined) {
+      qty = 1;
+    }
     tea.quantity = qty
     vm.userBag.push(tea)
     console.log(vm.userBag, qty)
