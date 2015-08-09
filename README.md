@@ -6,7 +6,11 @@
 
 ## Challenge One - Angular Views and Directives
 
-In this challenge, you will need to take the data for all the teas coming from the controller and arrange them in to a table.
+Switch to branch challenge-one
+
+In this challenge, you will need to take the data for all the teas coming from the controller and arrange them in to a table in views/teas/index.html.
+
+(You'll need to look inside the teas controller to see what is available to you in the view!)
 
 Each tea has an image, price, ingredients, rating, availability, and a list of categories.
 
@@ -19,3 +23,11 @@ When the button is clicked, there should be a order items quantity that gets upd
 The completed challenge should look something like this:
 
 !()[]
+
+## Challenge Two - Teas Controller
+
+Switch to branch challenge-two
+
+In this challenge you'll need to create the teas controller.  You should not make any changes to the teas view.
+
+When you're done, the teas view should be completely functional.
