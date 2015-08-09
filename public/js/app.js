@@ -55,15 +55,24 @@ angular.module('teaApp',['myRoutes','ngAnimate', 'bagService']).controller('teas
 
   vm.items = Bag.getBag()
 
+
   var runningTotal = 0;
   vm.items.forEach(function(item){
     runningTotal += (item.price/100) * item.quantity
     vm.orderTotal = runningTotal;
   })
 
-  function isEditing(editing){
-    vm.editing = vm.editing || editing
-    console.log(vm.editing, "editing");
+  vm.isEditing = function(editing){
+    if (vm.editing == false) {
+      vm.editing = true
+    } else {
+      vm.editing = false
+    }
+    runningTotal = 0;
+    vm.items.forEach(function(item){
+      runningTotal += (item.price/100) * item.quantity
+      vm.orderTotal = runningTotal;
+    })
   }
 
 }])

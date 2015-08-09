@@ -27,13 +27,17 @@
         </span>
       </td>
       <td>
-        {{item.quantity}}
+        <span ng-if="!bag.editing">{{item.quantity}}</span>
+        <span ng-if="bag.editing"><input type="number" min="0" ng-model="item.quantity"></span>
       </td>
       <td>
           <strong>{{ (item.price/100)*item.quantity | currency }}</strong>
       </td>
       <td>
-        <button type="button" ng-click="bag.isEditing(editing)">Edit</button>
+        <button type="button" ng-click="bag.isEditing(bag.editing)">
+          <span ng-if="!bag.editing">Edit</span>
+          <span ng-if="bag.editing">Save</span>
+        </button>
       </td>
     </tr>
   </tbody>
