@@ -34,12 +34,23 @@ angular.module('teaApp',['myRoutes','ngAnimate', 'bagService']).controller('teas
   vm.userBag = []
 
   vm.addToBag = function(tea, qty){
+    var duplicateTeas = 0;
+
     if (qty == undefined) {
       qty = 1;
     }
+
+    vm.userBag.forEach(function(eachTea){
+      if (eachTea._id == tea._id) {
+        duplicateTeas += 1
+      }
+    })
+
     tea.quantity = qty
-    vm.userBag.push(tea)
-    console.log(vm.userBag, qty)
+
+    if (duplicateTeas == 0) {
+      vm.userBag.push(tea)
+    }
   }
 
   Bag.addToBag(vm.userBag);
@@ -55,7 +66,6 @@ angular.module('teaApp',['myRoutes','ngAnimate', 'bagService']).controller('teas
 
   vm.items = Bag.getBag()
 
-
   var runningTotal = 0;
   vm.items.forEach(function(item){
     runningTotal += (item.price/100) * item.quantity
@@ -68,11 +78,34 @@ angular.module('teaApp',['myRoutes','ngAnimate', 'bagService']).controller('teas
     } else {
       vm.editing = false
     }
+
     runningTotal = 0;
     vm.items.forEach(function(item){
       runningTotal += (item.price/100) * item.quantity
       vm.orderTotal = runningTotal;
     })
+
+  }
+
+  vm.removeItem = function(item){
+    _items = vm.items
+    vm.items = []
+    _items.forEach(function(eachItem){
+      if (eachItem._id != item._id) {
+        vm.items.push(eachItem)
+      }
+    })
+
+    runningTotal = 0;
+    vm.items.forEach(function(item){
+      runningTotal += (item.price/100) * item.quantity
+      vm.orderTotal = runningTotal;
+    })
+
+    if (vm.items.length == 0) {
+      vm.orderTotal = 0
+    }
+
   }
 
 }])

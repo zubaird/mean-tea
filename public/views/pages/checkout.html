@@ -34,10 +34,11 @@
           <strong>{{ (item.price/100)*item.quantity | currency }}</strong>
       </td>
       <td>
-        <button type="button" ng-click="bag.isEditing(bag.editing)">
+        <button type="button" class="btn btn-warning" ng-click="bag.isEditing(bag.editing)">
           <span ng-if="!bag.editing">Edit</span>
           <span ng-if="bag.editing">Save</span>
         </button>
+        <button type="button" class="btn btn-danger" ng-click="bag.removeItem(item)">Remove</button>
       </td>
     </tr>
   </tbody>
