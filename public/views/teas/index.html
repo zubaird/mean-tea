@@ -22,11 +22,19 @@
   <thead>
     <tr>
       <td>Tea</td>
-      <td>Information</td>
+      <td>Information
+        <span class="pull-right">
+          Sort By Price:
+          <select ng-model="priceSort">
+            <option value="-price">Highest</option>
+            <option value="price">Lowest</option>
+          </select>
+        </span>
+      </td>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="tea in teas.teas | filter: categorySearch | filter: nameSearch">
+    <tr ng-repeat="tea in teas.teas | filter: categorySearch | filter: nameSearch | orderBy: priceSort">
       <td>
         <img ng-src="{{tea.imageUrl}}" alt="tea picture" />
       </td>
@@ -44,7 +52,11 @@
           <strong>Price:</strong> {{ tea.price/100 | currency }}
         </p>
         <p>
-          <strong>Caffeine Scale:</strong> {{ tea.caffeineScale }}
+          <div class="caffeine-section">
+            <h4>Caffeine</h4>
+            mg/serving: {{ tea.caffeineScale }}
+            <caffeine-meter caffeinemg="tea.caffeineScale" id="tea._id"></caffeine-meter>
+          </div>
         </p>
         <p>
           <strong>Ingredients:</strong> {{ tea.ingredients }}
