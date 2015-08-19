@@ -5,18 +5,6 @@
     category: <li>{{thing.categories}}</li>
 </ul>
 
-<form class="form" ng-submit="teas.addTea()">
-  Name: <input type="text" ng-model="teas.teaData.name" class="form-control">
-  Ingredients: <input type="text" ng-model="teas.teaData.ingredients" class="form-control">
-  Caffeine Scale: <input type="text" ng-model="teas.teaData.caffeineScale" class="form-control">
-  Categories:
-  <p>
-    <select ng-model="teas.teaData.categories">
-      <option ng-repeat="category in teas.categories">{{category}}</option>
-    </select>
-  </p>
-  <button type="submit" name="button" class="btn btn-success">Add</button>
-</form>
 
 <form class="form-inline">
 
@@ -35,22 +23,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="tea in teas.teas">
-      <td>
-        <strong>{{ tea.name }}</strong>
-        <img ng-src="{{tea.imageUrl}}" alt="tea picture" />
-      </td>
-      <td>{{ tea.ingredients }}</td>
-      <td>{{ tea.caffeineScale }}</td>
-      <td>${{ (tea.price/100).toFixed(2) }}</td>
-      <td>{{ tea.price/100 | currency }}</td>
-      <td>{{ tea.inStock }}</td>
-      <td>{{ tea.rating }}</td>
-      <td>
-        <u ng-repeat="category in tea.categories"l>
-          <li>{{category}}</li>
-        </ul>
-      </td>
+    <tr>
+
     </tr>
   </tbody>
 </table>
