@@ -130,13 +130,6 @@ angular.module('teaApp',['myRoutes','ngAnimate', 'bagService']).controller('teas
 
       var selectedMeter = $("#"+scope.id + " .semi-circle--mask")
 
-      // selectedMeter.css({
-      //   '-webkit-transform': 'rotate('+ gaugeReading +'deg)',
-      //   '-moz-transform': 'rotate('+ gaugeReading +'deg)',
-      //   '-ms-transform': 'rotate('+ gaugeReading +'deg)',
-      //   'transform': 'rotate('+ gaugeReading +'deg)'
-      // })
-
       selectedMeter.animate({ textIndent: gaugeReading },
         {
           step: function(now,fx){
