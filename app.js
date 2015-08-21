@@ -14,6 +14,22 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 var apiRouter = express.Router();
 
+/////////////// CHECKOUT PAGE ROUTES
+apiRouter.route('/bag')
+  .post(function(req,res){
+    var newBag = db.Bag.create(req.body,function(err){
+      if (err) {
+        return res.send(err)
+      }
+      res.json({ message: 'Bag created!' });
+    })
+  })
+  .get(function(req,res){
+    db.Bag.find(function(err,bag){
+      res.json(bag);
+    })
+  })
+
 /////////////// TEA ROUTES
 
 // CREATE AND INDEX

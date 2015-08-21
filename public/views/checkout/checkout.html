@@ -1,6 +1,9 @@
-
-
-<h3>My Shopping Bag <span class="pull-right">Order total: {{bag.orderTotal | currency}}</span> </h3>
+<h3>My Shopping Bag
+  <span class="pull-right">
+    <button type="button" class="btn btn-success" ng-click="saveBag(bag.items)">Save</button>
+    Order total: {{bag.orderTotal | currency}}
+  </span>
+</h3>
 <table class="table table-bordered">
   <thead>
     <tr>
